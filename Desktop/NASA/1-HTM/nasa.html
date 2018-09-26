@@ -83,7 +83,7 @@
                     for(var i=0; i<data["near_earth_objects"]["2018-09-08"].length; i++){
                         asteroidshtlm+='<h4>'+(i+19)+'. '+data["near_earth_objects"]["2018-09-08"][i].name +" - -" +data["near_earth_objects"]["2018-09-07"][i].close_approach_data[0].miss_distance.kilometers+' km </h4>';
                     }
-                    //testing            
+                    //testng        
                     $("#asteroids").html(asteroidshtlm);
                     console.log(data);
                 });
