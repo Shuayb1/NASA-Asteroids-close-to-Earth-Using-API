@@ -1,4 +1,4 @@
-# NASA-Asteroids-close-to-Earth-Using-API-
+# NASA Asteroids close to Earth Using API
 The National Aeronautics and Space Administration (NASA) is an American agency
 responsible for aeronautics and aerospace research. NASA’s API provides data on
 objects in space. It is an app that displays a list of all Asteroids close to the earth.
