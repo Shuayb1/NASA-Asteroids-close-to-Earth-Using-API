@@ -3,7 +3,7 @@ The National Aeronautics and Space Administration (NASA) is an American agency
 responsible for aeronautics and aerospace research. NASA’s API provides data on
 objects in space. It is an app that displays a list of all Asteroids close to the earth.
 The app should list 5 asteroids, and its distance from the earth on a given day. The
-app should have a form where a user can input a date over the last 30 days. It should
+app should have a form where a user can input a date over the last 7days. It should
 fetch data from NASA and display the asteroids closest the earth, ordered in
 ascending order of their distance from the earth.
 It should also cache data fetched from the external API into a local
