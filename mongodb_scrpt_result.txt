@@ -1,0 +1,13 @@
+************************************************
+
+The number of documents in my collection: 4
+
+****************
+
+All entries with ‘Kola’ in field ‘name: 1
+
+****************
+
+Printing all entries: {'_id': ObjectId('5bb7ba4d4ce83632f425be1a'), 'name': 'Ade', 'address': 'Highway 37'}
+
+************************************************
