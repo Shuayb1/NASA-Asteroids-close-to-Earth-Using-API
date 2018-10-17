@@ -14,3 +14,16 @@ API and update the cache with the new data.
 The projectct is build using Python; web framework is flask, and DB is Pymongo(MongoDB for python). 
 Trello board for the project - https://trello.com/b/uHy25mRb/nasa-asteroids-close-to-earth-using-api
 Wireframe - https://wireframe.cc/pro/edit/194632
+
+
+Running the Hello World App
+
+a. Clone the project repo to your computer
+
+b. Using command line, cd into the directory where the project is cloned to
+
+c. In your command line type python hello.py to run the app
+
+d. Open your browser and type the address that is displayed(http://127.0.0.1:5000/)
+
+e. The word "Hello, World!" will be display
