@@ -25,6 +25,7 @@ Wireframe - https://wireframe.cc/pro/edit/194632
 
 
 # Running the Hello World App
+NB: I used variable environment to hide the API Key(NASA_API_KEY) and the Mongodb Server(MONGODB_SERVER), so you should use the variable names as in the parenthesis respectively.
 
 a. Clone the project repo to your computer
 
