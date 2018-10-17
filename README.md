@@ -11,12 +11,22 @@ database and render data from its database, if it is not
 older than 5 mins. If the data is older than 5 mins, it should refetch it from the
 API and update the cache with the new data.
 
-The projectct is build using Python; web framework is flask, and DB is Pymongo(MongoDB for python). 
+# The projectct is build using
+a. Python
+b. Flask
+c. MongoDB Database(mLab)
+d. HTML
+e. CSS 
+f. Test Driven Development
+g. Travis CI
+h. Virtual Environment
+i. Environment Variables
+
 Trello board for the project - https://trello.com/b/uHy25mRb/nasa-asteroids-close-to-earth-using-api
 Wireframe - https://wireframe.cc/pro/edit/194632
 
 
-Running the Hello World App
+# Running the Hello World App
 
 a. Clone the project repo to your computer
 
