@@ -1,44 +1,65 @@
 
+<!DOCTYPE html>
+
 <html>
 
     <head>
 
+        <meta charset="utf-8">
         <title>NASA Asteroid Update!</title>
 
     </head>
 
 
     <body>
+{#        <iframe height="300" width="500" src="https://www.nasa.gov/multimedia/nasatv/index.html#public" align='right' frameborder='0' allowfullscreen></iframe>#}
 
-        <h2>Welcome to National Aeronautics and Space Administration (NASA) Asteroid distance update!</h2>
-        <h4>**NASA is an American agency responsible for aeronautics and aerospace research</h4>
+
+       <header><h2>Welcome to National Aeronautics and Space Administration (NASA) Asteroid distance update!</h2>
+        <h4>**NASA is an American agency responsible for aeronautics and aerospace research</h4></header>
 
         <hr>
+        <header><h3>Today's Update</h3></header>
 
+        <main>
         <table>
             <thead>
                 <tr>
-                    <th>Number(Ascendingly)</th>
+                    <th>No.</th>
                     <th>Asteroid Name</th>
-                    <th>Asteroid Distance</th>
+                    <th>Asteroid Distance(km)</th>
                 </tr>
             </thead>
+            <tbody>
+                {%for do in iterated_doc_today%}
+
+                    <tr>
+                        <td> {{ do.i }} </td><td> {{ do.key }} </td><td> {{ do.value }}  </td>
+                    </tr>
+
+                {%endfor%}
+
+            </tbody>
 
         </table>
-
-        <form>
-            <p>Asteroid updates within last 7days<input type="radio" name='updatedate'></p>
-            <p><input type="date"></p>
+        <hr>
+        <form action="sevenDaysUpdate.html">
+            <header><h3>Previous 7days' Update</h3></header>
+            <p>Enter a date within today {{ end_date }} and {{ start_date }}</p>
+            <p><input type="date" name="asteroid update" min={{ end_date }} max={{ start_date }}></p><br>
             <button id="submitbutton">Submit</button>
 
         </form>
+        </main>
 
         <div id="asteroids"></div>
-        <p><a href='http://www.nasa.com'>for more NASA info...</a></p>
+        <p>Learn More About <a href='http://www.nasa.gov' target="_blank">NASA</a></p>
 
         <!--        <iframe src="https://api.nasa.gov/api.html#neows-feed" frameborder='0' allowfullscreen></iframe> -->
+        <hr>
         <footer><p>&copy;Posh Firm. All Right Reserved</p></footer>
 
     </body>
 
 </html>
+

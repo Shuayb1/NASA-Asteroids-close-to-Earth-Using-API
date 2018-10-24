@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seven Days Update</title>
+</head>
+
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>No.</th>
+        <th>Asteroid Name</th>
+        <th>Asteroid Distance(km)</th>
+    </tr>
+    </thead>
+    <tbody>
+
+{#        {% for i in fields %}#}
+{##}
+{#            <tr>#}
+{#                <td> {{ i }} </td>#}
+{#            </tr>#}
+{##}
+            {% for i,c in a.items() %}
+                 <tr>
+                    <td>Asteroids for  {{ i }} </td>
+                 </tr>
+
+                {%for do in c%}
+                <tr>
+
+                        <td> {{ a[i][0] }} </td><td> {{ a[i][1] }} </td>
+
+                 </tr>
+                 {%endfor%}
+            {%endfor%}
+
+
+    </tbody>
+
+</table>
+</body>
+</html>

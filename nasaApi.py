@@ -28,38 +28,41 @@ class TheAPI(TheClient):
         super(TheAPI, self).__init__()
         day_count = (self.end_date - self.start_date).days + 1
 
-        v = []
-        my_object = {}
+        date_list = []
+        db_input = {}
 
         for single_date in (self.start_date + timedelta(n) for n in range(day_count)):
-            v.append(single_date.strftime('%Y-%m-%d'))
+            date_list.append(single_date.strftime('%Y-%m-%d'))
 
-        for i in v:
-            a = self.asteroid.neo_feed(self.start_date, self.end_date)['near_earth_objects'][i]
+        for day in date_list:
+            day_link = self.asteroid.neo_feed(self.start_date, self.end_date)['near_earth_objects'][day]
+            db_input[day] = {}
 
-            for c in a:
-                name = c['name']
-                distance = c['close_approach_data'][0]['miss_distance']['kilometers'] + 'km'
-                my_object[name] = distance
+            for get in day_link:
+                self.name = get['name']
+                self.distance = get['close_approach_data'][0]['miss_distance']['kilometers']
+                db_input[day].update({self.name: self.distance})
 
-        print(my_object)
-        # self.nasa_coll_all.insert(my_object)
-        self.today_asteroids()
+
+        # self.nasa_coll_all.insert(db_input)
+        # print(self.db_input[self.end_date])
+
+        # self.today_asteroids()
 
     def today_asteroids(self):
 
-        my_object_today = {}
+        db_input_today = {}
         today = datetime.today().strftime('%Y-%m-%d')
 
-        a = self.asteroid.neo_feed(self.start_date, self.end_date)['near_earth_objects'][today]
+        today_link = self.asteroid.neo_feed(self.start_date, self.end_date)['near_earth_objects'][today]
 
-        for c in a:
-            name = c['name']
-            distance = c['close_approach_data'][0]['miss_distance']['kilometers'] + 'km'
-            my_object_today[name] = distance
+        for get in today_link:
+            name = get['name']
+            distance = get['close_approach_data'][0]['miss_distance']['kilometers']
+            db_input_today[name] = distance
 
-        print(my_object_today)
-        # self.nasa_coll_today.insert(my_object_today)
+        # print(db_input_today)
+        # self.nasa_coll_today.insert(db_input_today)
 
 
 if __name__ == "__main__":
