@@ -15,13 +15,6 @@
     </tr>
     </thead>
     <tbody>
-
-{#        {% for i in fields %}#}
-{##}
-{#            <tr>#}
-{#                <td> {{ i }} </td>#}
-{#            </tr>#}
-{##}
             {% for i,c in a.items() %}
                  <tr>
                     <td>Asteroids for  {{ i }} </td>
@@ -30,13 +23,12 @@
                 {%for do in c%}
                 <tr>
 
-                        <td> {{ a[i][0] }} </td><td> {{ a[i][1] }} </td>
+                        <td>{{ do.count }}</td><td> {{ do.name }} </td><td> {{ do.distance }} </td>
 
-                 </tr>
+                </tr>
+
                  {%endfor%}
             {%endfor%}
-
-
     </tbody>
 
 </table>

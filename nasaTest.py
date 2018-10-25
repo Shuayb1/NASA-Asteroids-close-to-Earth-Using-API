@@ -22,10 +22,10 @@ def db_input():
     check_db_input = api_class.distance
     return check_db_input
 
-#
-# def db_output():
-#     s = app.app.test_client()
-#     return s
+
+def db_output():
+    s = app.app.test_client()
+    return s
 
 
 class TestNasa(unittest.TestCase):
@@ -37,9 +37,9 @@ class TestNasa(unittest.TestCase):
         ''' The asteroid name and asteroid distance with their specific dates are object i.e dict '''
         assert type(db_input()) == str
 
-    # def test_db_output(self):
-    #     '''This is what goes out to the html, after all the required field is gotten'''
-    #     assert type(db_output()) == dict
+    def test_db_output(self):
+        '''This is what goes out to the html, after all the required field is gotten'''
+        assert type(db_output()) == dict
 
 
 if __name__ == '__main__':

@@ -44,7 +44,7 @@ class TheAPI(TheClient):
                 db_input[day].update({self.name: self.distance})
 
 
-        # self.nasa_coll_all.insert(db_input)
+        self.nasa_coll_all.insert(db_input)
         # print(self.db_input[self.end_date])
 
         # self.today_asteroids()

@@ -15,19 +15,18 @@ app.config['MONGO_URI'] = mongodb_server
 
 mongo = PyMongo(app)
 
-iterated_doc_today = []
-
 
 @app.route('/')
 def index():
     # get the newest document by sorting in descending order
     document_cursor_today = mongo.db.nasa_collections_today.find({}, {'_id': False}).sort('_id', -1).limit(1)
 
+    iterated_doc_today = []
+
     # get the newest document and sort the values
     for doc_today in document_cursor_today:
         sorted_doc_today = sorted(doc_today.items())
         sorted_doc_today.sort(key=operator.itemgetter(1))
-        # print(sorted_doc_today)
 
         # iterate over the sorted document
         for numbering_today, (asteroid_name_today, asteroid_distance_today) in enumerate(sorted_doc_today):
@@ -35,7 +34,6 @@ def index():
             if numbering_today < 5:
                 iterated_doc_today.append({"i": numbering_today + 1, "key": asteroid_name_today,
                                            "value": asteroid_distance_today})
-                # print(iterated_doc_today)
     return render_template('nasa.html', iterated_doc_today=iterated_doc_today, end_date=TheAPI.end_date,
                            start_date=TheAPI.start_date)
 
@@ -63,11 +61,14 @@ def seven_days():
 
         limited_array = fields[i][:5]
         lall = []
-        for c in limited_array:
-            # string = ''.join('asteroid' + c[0] + ' distance' + c[1])
-            lall.append(''.join('asteroid' + c[0] + ' distance' + c[1]))
-            a[i] = lall
 
+        count = 0
+        for c in limited_array:
+            count += 1
+            # lall.append(''.join('asteroid' + c[0] + ' distance' + c[1]))
+            lall.append({'count': count, 'name': c[0], 'distance': c[1]})
+            a[i] = lall
+    print(a)
     return render_template('sevenDaysUpdate.html', fields=fields, a=a)
 
 

@@ -7,6 +7,7 @@
 
         <meta charset="utf-8">
         <title>NASA Asteroid Update!</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
 
     </head>
 
@@ -45,12 +46,99 @@
         <hr>
         <form action="sevenDaysUpdate.html">
             <header><h3>Previous 7days' Update</h3></header>
-            <p>Enter a date within today {{ end_date }} and {{ start_date }}</p>
-            <p><input type="date" name="asteroid update" min={{ end_date }} max={{ start_date }}></p><br>
+            <p>Enter a date within  {{ start_date }} and today {{ end_date }}</p>
+            <p><input type="date" id="dateInput" name="asteroid update" min={{ start_date }} max={{ end_date }}></p><br>
             <button id="submitbutton">Submit</button>
-
         </form>
+{#            <form  action="sevenDaysUpdate.html">#}
+{#                <header><h3>Previous 7days' Update</h3></header>#}
+{#                Enter a date between today {{ end_date }}:<br>#}
+{#                <input type="date" name="date" max={{ end_date }}><br><br>#}
+{#                And the last seven days {{ start_date }}:<br>#}
+{#                <input type="date" name="date" min={{ start_date }}><br><br>#}
+{#                <button id="submitbutton">Submit</button>#}
+{#            </form>#}
         </main>
+{#        <script>#}
+{##}
+{#            $.validator.addMethod("dateRange", function(value, element, params) {#}
+{#                try {#}
+{#                    var date = new Date(value);#}
+{#                    if (date >= params.from && date <= params.to) {#}
+{#                        return true;#}
+{#                    }#}
+{#                } catch (e) {}#}
+{#                return false;#}
+{#            }, 'message');#}
+{##}
+{#            var fromDate = new Date("2017-02-01");#}
+{#            var toDate = new Date("2017-12-31");#}
+{##}
+{#            $.validator.addClassRules({#}
+{#                myDateFieldRangeValidate: {#}
+{#                    dateRange: {#}
+{#                        from: fromDate,#}
+{#                        to: toDate#}
+{#                    }#}
+{#                }#}
+{#            });#}
+{##}
+{#            $("#myField").addClass("myDateFieldRangeValidate");#}
+{#            $("#frm1").validate();#}
+{#            $("#btnValidate").click(function() {#}
+{#                console.log($("#frm1").valid())#}
+{#            });#}
+{##}
+{#            jQuery(function($) {#}
+{#                var validator = $('#myform').validate({#}
+{#                    rules: {},#}
+{#                    messages: {}#}
+{#                });#}
+{#            });#}
+{##}
+{#        </script>#}
+        <script>
+            document.getElementById("submitbutton").onclick = function () {
+
+                checkDateRange();
+                var pickedDate = document.getElementById('dateInput').value();
+
+                    function checkDateRange(start, end) {
+                        // Parse the entries
+                        var startDate = Date.parse({{ start_date }});
+                        var endDate = Date.parse({{ end_date  }});
+                        // Make sure they are valid
+                        if (isNaN(startDate)) {
+                            alert("The start date provided is not valid, please enter a valid date.");
+                            return false;
+                        }
+                        if (isNaN(endDate)) {
+                            alert("The end date provided is not valid, please enter a valid date.");
+                            return false;
+
+                        }
+                        if (isNaN(pickedDate)) {
+                            alert("The date provided is not valid, please enter a valid date.");
+                            return false;
+                        }
+                        if (){
+                            document.getElementsByName({{ got }})
+                        }
+                        // Check the date range, 86400000 is the number of milliseconds in one day
+                        var difference = (endDate - startDate) / (86400000 * 7);
+                        if (difference < 0) {
+                            alert("The start date must come before the end date.");
+                            return false;
+                        }
+                        if (difference <= 1) {
+                            alert("The range must be at least seven days apart.");
+                            return false;
+                        }
+                        return true;
+                    }
+                }
+
+        </script>
 
         <div id="asteroids"></div>
         <p>Learn More About <a href='http://www.nasa.gov' target="_blank">NASA</a></p>
