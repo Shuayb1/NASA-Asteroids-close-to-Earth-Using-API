@@ -65,7 +65,6 @@ def seven_days():
         count = 0
         for c in limited_array:
             count += 1
-            # lall.append(''.join('asteroid' + c[0] + ' distance' + c[1]))
             lall.append({'count': count, 'name': c[0], 'distance': c[1]})
             a[i] = lall
     print(a)
