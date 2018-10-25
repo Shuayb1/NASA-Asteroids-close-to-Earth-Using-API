@@ -36,3 +36,15 @@ c. In your command line type python hello.py to run the app
 d. Open your browser and type the address that is displayed(http://127.0.0.1:5000/)
 
 e. The word "Hello, World!" will be display
+
+
+# To Run Test
+
+a. pip install unittest
+
+b. pip install requests
+
+c. Import your envinronment variable as done while running the hello.py
+
+d. clone the nasaTest.py file
+
