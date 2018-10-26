@@ -46,7 +46,7 @@ def seven_days():
 
     #get the newest document and sort the values
     fields = {}
-    a = {}
+    seven_days_values = {}
 
     for doc in document_cursor:
 
@@ -60,15 +60,15 @@ def seven_days():
     for i, k in fields.items():
 
         limited_array = fields[i][:5]
-        lall = []
+        store = []
 
         count = 0
         for c in limited_array:
             count += 1
-            lall.append({'count': count, 'name': c[0], 'distance': c[1]})
-            a[i] = lall
-    print(a)
-    return render_template('sevenDaysUpdate.html', fields=fields, a=a)
+            store.append({'count': count, 'name': c[0], 'distance': c[1]})
+            seven_days_values[i] = store
+
+    return render_template('sevenDaysUpdate.html', fields=fields, seven_days_values=seven_days_values)
 
 
 if __name__ == '__main__':

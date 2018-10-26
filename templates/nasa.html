@@ -5,12 +5,11 @@
 
     <head>
 
-        <meta charset="utf-8">
-        <title>NASA Asteroid Update!</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+            <meta charset="utf-8">
+            <title>NASA Asteroid Update!</title>
+             <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
 
     </head>
-
 
     <body>
 {#        <iframe height="300" width="500" src="https://www.nasa.gov/multimedia/nasatv/index.html#public" align='right' frameborder='0' allowfullscreen></iframe>#}
@@ -44,12 +43,25 @@
 
         </table>
         <hr>
-        <form action="sevenDaysUpdate.html">
-            <header><h3>Previous 7days' Update</h3></header>
-            <p>Enter a date within  {{ start_date }} and today {{ end_date }}</p>
-            <p><input type="date" id="dateInput" name="asteroid update" min={{ start_date }} max={{ end_date }}></p><br>
-            <button id="submitbutton">Submit</button>
-        </form>
+{#        <form action="sevenDaysUpdate.html">#}
+{#            <header><h3>Previous 7days' Update</h3></header>#}
+{#            <div id="storage" style="display: none;">#}
+{#            <p>Enter a date within  {{ start_date }} and today {{ end_date }}</p>#}
+{#            </div>#}
+{#            <p><input type="date" id="dateInput" name="asteroid update" min={{ start_date }} max={{ end_date }}></p><br>#}
+{#            <button id="submitbutton">Submit</button>#}
+{#        </form>#}
+                <header><h3>Previous 7days' Updates</h3></header>
+                <div id="storage">
+                    <label for="date_input">Choose a date within {{ start_date }} and today {{ end_date }}:</label>
+                    <input type="date" id="date_input" name="date_input" min={{ start_date }} max={{ end_date }} required>
+                    <span class="validity"></span>
+                </div>
+                <div>
+                    <button id="submit_button" type="submit">submit</button>
+{#                    <input id="submitbutton" >#}
+                </div>
+{#            </form>#}
 {#            <form  action="sevenDaysUpdate.html">#}
 {#                <header><h3>Previous 7days' Update</h3></header>#}
 {#                Enter a date between today {{ end_date }}:<br>#}
@@ -97,55 +109,110 @@
 {#            });#}
 {##}
 {#        </script>#}
-        <script>
-            document.getElementById("submitbutton").onclick = function () {
+        <script type="text/javascript">
+            {#document.getElementById("submitbutton").onclick = function () {#}
+            {##}
+            {#    checkDateRange();#}
+            {#    var picked_the_Date = document.querySelector('input[type="date"]');#}
+            {#    let responseHTML = document.createElement('body');#}
+            {##}
+            {#    function checkDateRange(start, end) {#}
+                    {#// Parse the entries#}
+            {#        let startDate = Date.parse({{ start_date }});#}
+            {#        let endDate = Date.parse({{ end_date  }});#}
+                    {#let pickedDate = Date.parse(picked_the_Date);#}
+            {##}
+                    {#// Make sure they are valid#}
+                    {#if (isNaN(startDate)) {#}
+                    {#    alert("The start date provided is not valid, please enter a valid date.");#}
+                    {#    return false;#}
+                    {#}#}
+                    {#if (isNaN(endDate)) {#}
+                    {#    alert("The end date provided is not valid, please enter a valid date.");#}
+                    {#    return false;#}
+                    {#}#}
+            {##}
+                    {#if (isNaN(picked_the_Date)) {#}
+                    {#    alert("The date provided is not valid, please enter a valid date.");#}
+                    {#    return false;#}
+            {#        } if (picked_the_Date >= startDate || picked_the_Date <= endDate) {#}
+            {#            htmlbody();#}
+            {#        }#}
+                    {#// Check the date range, 86400000 is the number of milliseconds in one day#}
+                    {#var difference = (endDate - startDate) / (86400000 * 7);#}
+                    {#if (difference < 0) {#}
+                    {#    alert("The start date must come before the end date.");#}
+                    {#    return false;#}
+                    {#}#}
+                    {#if (difference <= 1) {#}
+                    {#    alert("The range must be at least seven days apart.");#}
+                    {#    return false;#}
+                    {#}#}
+                    {#return true;#}
+            {##}
+            {#        function htmlbody(content) {#}
+            {#            lower = content.toLocaleLowerCase();#}
+            {#            var cont = lower.indexOf('body');#}
+                        {#if (cont == -1) return "";#}
+            {#            cont = lower.indexOf('>', cont);#}
+            {##}
+            {#            var cont_last = lower.lastIndexOf('</body>');#}
+            {#            if (cont_last == -1) y = lower.lastIndexOf("</html>");#}
+            {#            if (cont_last == -1) y = content.length;    // If no HTML then just grab everything till end#}
+            {#            return content.slice(cont + 1, cont_last);#}
+            {#        }#}
+            {##}
+            {#        function getContent(url, fun, storage, param) {#}
+            {#            var load_it = load_it_fn();#}
+            {#            load_it.onreadystatechange() = function () {#}
+            {##}
+            {#                if (load_it.readyState == 4) {#}
+            {##}
+                                {#if(load_it.readyState == 4)#}
+            {#                    {#}
+            {#                        storage.innerHTML = htmlbody(load_it.responseText);#}
+            {#                        fun(storage, param);#}
+            {##}
+            {#                    }#}
+            {#                }#}
+            {#            };#}
+            {#            load_it.open("GET", sevenDaysUpdate.html, true);#}
+            {#            load_it.send(null);#}
+            {#        }#}
+            {##}
+            {#        function processHtml(temp, target) {#}
+            {#            target.innerHTML = temp.innerHTML;#}
+            {#        }#}
+            {##}
+            {#        function loadWholePage(url) {#}
+            {#            var load = document.getElementById("storage");#}
+            {#            var whole = document.getElementById("displayed");#}
+            {#            getContent(sevenDaysUpdate.html, processHtml, load, whole);#}
+            {##}
+            {#        }#}
+            {#    }#}
+            {#}#}
 
-                checkDateRange();
-                var pickedDate = document.getElementById('dateInput').value();
-
-                    function checkDateRange(start, end) {
-                        // Parse the entries
-                        var startDate = Date.parse({{ start_date }});
-                        var endDate = Date.parse({{ end_date  }});
-                        // Make sure they are valid
-                        if (isNaN(startDate)) {
-                            alert("The start date provided is not valid, please enter a valid date.");
-                            return false;
-                        }
-                        if (isNaN(endDate)) {
-                            alert("The end date provided is not valid, please enter a valid date.");
-                            return false;
-
-                        }
-                        if (isNaN(pickedDate)) {
-                            alert("The date provided is not valid, please enter a valid date.");
-                            return false;
-                        }
-                        if (){
-                            document.getElementsByName({{ got }})
-                        }
-                        // Check the date range, 86400000 is the number of milliseconds in one day
-                        var difference = (endDate - startDate) / (86400000 * 7);
-                        if (difference < 0) {
-                            alert("The start date must come before the end date.");
-                            return false;
-                        }
-                        if (difference <= 1) {
-                            alert("The range must be at least seven days apart.");
-                            return false;
-                        }
-                        return true;
-                    }
-                }
+                $("#submit_button").click(function(){
+    $.ajax({
+      type: 'POST',
+      url: "/sevenDaysUpdate",
+      data: {student_id: 1},
+      dataType: "text",
+      success: function(data){
+                 alert("Deleted Student ID "+ student_id.toString());
+               }
+    });
+});
 
         </script>
 
-        <div id="asteroids"></div>
+        <div class="asteroids"></div>
         <p>Learn More About <a href='http://www.nasa.gov' target="_blank">NASA</a></p>
 
         <!--        <iframe src="https://api.nasa.gov/api.html#neows-feed" frameborder='0' allowfullscreen></iframe> -->
         <hr>
-        <footer><p>&copy;Posh Firm. All Right Reserved</p></footer>
+        <footer><p>&copy;Posh Firm. All Right Reserved </p></footer>
 
     </body>
 
