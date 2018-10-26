@@ -16,15 +16,15 @@
     </thead>
     <tbody>
             <div id="display">
-            {% for i,c in a.items() %}
+            {% for date, values in seven_days_values.items() %}
                  <tr>
-                    <td>Asteroids for  {{ i }} </td>
+                    <td>Asteroids for  {{ date }} </td>
                  </tr>
 
-                {%for do in c%}
+                {%for field in date%}
                 <tr>
 
-                    <td>{{ do.count }}</td><td> {{ do.name }} </td><td> {{ do.distance }} </td>
+                    <td>{{ field.count }}</td><td> {{ field.name }} </td><td> {{ field.distance }} </td>
 
                 </tr></div>
 

@@ -43,14 +43,7 @@
 
         </table>
         <hr>
-{#        <form action="sevenDaysUpdate.html">#}
-{#            <header><h3>Previous 7days' Update</h3></header>#}
-{#            <div id="storage" style="display: none;">#}
-{#            <p>Enter a date within  {{ start_date }} and today {{ end_date }}</p>#}
-{#            </div>#}
-{#            <p><input type="date" id="dateInput" name="asteroid update" min={{ start_date }} max={{ end_date }}></p><br>#}
-{#            <button id="submitbutton">Submit</button>#}
-{#        </form>#}
+
                 <header><h3>Previous 7days' Updates</h3></header>
                 <div id="storage">
                     <label for="date_input">Choose a date within {{ start_date }} and today {{ end_date }}:</label>
@@ -59,155 +52,33 @@
                 </div>
                 <div>
                     <button id="submit_button" type="submit">submit</button>
-{#                    <input id="submitbutton" >#}
                 </div>
-{#            </form>#}
-{#            <form  action="sevenDaysUpdate.html">#}
-{#                <header><h3>Previous 7days' Update</h3></header>#}
-{#                Enter a date between today {{ end_date }}:<br>#}
-{#                <input type="date" name="date" max={{ end_date }}><br><br>#}
-{#                And the last seven days {{ start_date }}:<br>#}
-{#                <input type="date" name="date" min={{ start_date }}><br><br>#}
-{#                <button id="submitbutton">Submit</button>#}
-{#            </form>#}
         </main>
-{#        <script>#}
-{##}
-{#            $.validator.addMethod("dateRange", function(value, element, params) {#}
-{#                try {#}
-{#                    var date = new Date(value);#}
-{#                    if (date >= params.from && date <= params.to) {#}
-{#                        return true;#}
-{#                    }#}
-{#                } catch (e) {}#}
-{#                return false;#}
-{#            }, 'message');#}
-{##}
-{#            var fromDate = new Date("2017-02-01");#}
-{#            var toDate = new Date("2017-12-31");#}
-{##}
-{#            $.validator.addClassRules({#}
-{#                myDateFieldRangeValidate: {#}
-{#                    dateRange: {#}
-{#                        from: fromDate,#}
-{#                        to: toDate#}
-{#                    }#}
-{#                }#}
-{#            });#}
-{##}
-{#            $("#myField").addClass("myDateFieldRangeValidate");#}
-{#            $("#frm1").validate();#}
-{#            $("#btnValidate").click(function() {#}
-{#                console.log($("#frm1").valid())#}
-{#            });#}
-{##}
-{#            jQuery(function($) {#}
-{#                var validator = $('#myform').validate({#}
-{#                    rules: {},#}
-{#                    messages: {}#}
-{#                });#}
-{#            });#}
-{##}
-{#        </script>#}
-        <script type="text/javascript">
-            {#document.getElementById("submitbutton").onclick = function () {#}
-            {##}
-            {#    checkDateRange();#}
-            {#    var picked_the_Date = document.querySelector('input[type="date"]');#}
-            {#    let responseHTML = document.createElement('body');#}
-            {##}
-            {#    function checkDateRange(start, end) {#}
-                    {#// Parse the entries#}
-            {#        let startDate = Date.parse({{ start_date }});#}
-            {#        let endDate = Date.parse({{ end_date  }});#}
-                    {#let pickedDate = Date.parse(picked_the_Date);#}
-            {##}
-                    {#// Make sure they are valid#}
-                    {#if (isNaN(startDate)) {#}
-                    {#    alert("The start date provided is not valid, please enter a valid date.");#}
-                    {#    return false;#}
-                    {#}#}
-                    {#if (isNaN(endDate)) {#}
-                    {#    alert("The end date provided is not valid, please enter a valid date.");#}
-                    {#    return false;#}
-                    {#}#}
-            {##}
-                    {#if (isNaN(picked_the_Date)) {#}
-                    {#    alert("The date provided is not valid, please enter a valid date.");#}
-                    {#    return false;#}
-            {#        } if (picked_the_Date >= startDate || picked_the_Date <= endDate) {#}
-            {#            htmlbody();#}
-            {#        }#}
-                    {#// Check the date range, 86400000 is the number of milliseconds in one day#}
-                    {#var difference = (endDate - startDate) / (86400000 * 7);#}
-                    {#if (difference < 0) {#}
-                    {#    alert("The start date must come before the end date.");#}
-                    {#    return false;#}
-                    {#}#}
-                    {#if (difference <= 1) {#}
-                    {#    alert("The range must be at least seven days apart.");#}
-                    {#    return false;#}
-                    {#}#}
-                    {#return true;#}
-            {##}
-            {#        function htmlbody(content) {#}
-            {#            lower = content.toLocaleLowerCase();#}
-            {#            var cont = lower.indexOf('body');#}
-                        {#if (cont == -1) return "";#}
-            {#            cont = lower.indexOf('>', cont);#}
-            {##}
-            {#            var cont_last = lower.lastIndexOf('</body>');#}
-            {#            if (cont_last == -1) y = lower.lastIndexOf("</html>");#}
-            {#            if (cont_last == -1) y = content.length;    // If no HTML then just grab everything till end#}
-            {#            return content.slice(cont + 1, cont_last);#}
-            {#        }#}
-            {##}
-            {#        function getContent(url, fun, storage, param) {#}
-            {#            var load_it = load_it_fn();#}
-            {#            load_it.onreadystatechange() = function () {#}
-            {##}
-            {#                if (load_it.readyState == 4) {#}
-            {##}
-                                {#if(load_it.readyState == 4)#}
-            {#                    {#}
-            {#                        storage.innerHTML = htmlbody(load_it.responseText);#}
-            {#                        fun(storage, param);#}
-            {##}
-            {#                    }#}
-            {#                }#}
-            {#            };#}
-            {#            load_it.open("GET", sevenDaysUpdate.html, true);#}
-            {#            load_it.send(null);#}
-            {#        }#}
-            {##}
-            {#        function processHtml(temp, target) {#}
-            {#            target.innerHTML = temp.innerHTML;#}
-            {#        }#}
-            {##}
-            {#        function loadWholePage(url) {#}
-            {#            var load = document.getElementById("storage");#}
-            {#            var whole = document.getElementById("displayed");#}
-            {#            getContent(sevenDaysUpdate.html, processHtml, load, whole);#}
-            {##}
-            {#        }#}
-            {#    }#}
-            {#}#}
 
-                $("#submit_button").click(function(){
-    $.ajax({
-      type: 'POST',
-      url: "/sevenDaysUpdate",
-      data: {student_id: 1},
-      dataType: "text",
-      success: function(data){
-                 alert("Deleted Student ID "+ student_id.toString());
-               }
-    });
-});
+        <script type="text/javascript">
+
+                $("button").click(function()
+                {
+                    console.log();
+
+                    $.ajax
+                    ({
+                        type: 'POST',
+                        url: "/sevenDaysUpdate",
+                        data: {seven_days_values: 1},
+                        dataType: "text",
+                        success: function (data)
+                        {
+                            alert("Asteroid ");
+                        }
+                    });
+                });
 
         </script>
 
         <div class="asteroids"></div>
+        <p>To check all asteroids for the past seven days,<a href="{{ url_for("sevenDaysUpdate.html"}}"> click</a>.</p>
+
         <p>Learn More About <a href='http://www.nasa.gov' target="_blank">NASA</a></p>
 
         <!--        <iframe src="https://api.nasa.gov/api.html#neows-feed" frameborder='0' allowfullscreen></iframe> -->
