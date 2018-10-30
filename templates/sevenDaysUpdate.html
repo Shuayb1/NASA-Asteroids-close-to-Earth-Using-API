@@ -6,6 +6,8 @@
 </head>
 
 <body>
+<header><h2>Welcome to National Aeronautics and Space Administration (NASA) Asteroid distance update!</h2>
+        <h4>**NASA is an American agency responsible for aeronautics and aerospace research</h4></header>
 <table>
     <thead>
     <tr>
@@ -16,17 +18,17 @@
     </thead>
     <tbody>
             <div id="display">
-            {% for date, values in seven_days_values.items() %}
+            {% for i,c in seven_days_values.items() %}
                  <tr>
-                    <td>Asteroids for  {{ date }} </td>
+                    <td>Asteroids for  {{ i }} </td>
                  </tr>
 
-                {%for field in date%}
+                {%for do in c%}
                 <tr>
 
-                    <td>{{ field.count }}</td><td> {{ field.name }} </td><td> {{ field.distance }} </td>
+                    <td>{{ do.count }}</td><td> {{ do.name }} </td><td> {{ do.distance }} </td>
 
-                </tr></div>
+                </tr><br></div>
 
 
                  {%endfor%}

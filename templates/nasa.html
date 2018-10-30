@@ -12,8 +12,6 @@
     </head>
 
     <body>
-{#        <iframe height="300" width="500" src="https://www.nasa.gov/multimedia/nasatv/index.html#public" align='right' frameborder='0' allowfullscreen></iframe>#}
-
 
        <header><h2>Welcome to National Aeronautics and Space Administration (NASA) Asteroid distance update!</h2>
         <h4>**NASA is an American agency responsible for aeronautics and aerospace research</h4></header>
@@ -53,6 +51,18 @@
                 <div>
                     <button id="submit_button" type="submit">submit</button>
                 </div>
+
+            <nav>
+                <ul>
+
+                    <p>To check all asteroids for the past seven days,<a href='/sevenDaysUpdate'> click</a>.</p>
+                </ul>
+
+            </nav>
+
+
+
+
         </main>
 
         <script type="text/javascript">
@@ -77,7 +87,6 @@
         </script>
 
         <div class="asteroids"></div>
-        <p>To check all asteroids for the past seven days,<a href="{{ url_for("sevenDaysUpdate.html"}}"> click</a>.</p>
 
         <p>Learn More About <a href='http://www.nasa.gov' target="_blank">NASA</a></p>
 

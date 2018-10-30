@@ -35,5 +35,5 @@ class TheClient(object):
         self.nasa_coll_all = self.nasa_db['nasa_collections']
         self.nasa_coll_today = self.nasa_db['nasa_collections_today']
 
-        #Only close the connection when your app is terminating
-        #  self.my_client.close()
+        #Only close the connection when the app is terminating
+        self.my_client.close()

@@ -28,40 +28,44 @@ class TheAPI(TheClient):
         super(TheAPI, self).__init__()
         day_count = (self.end_date - self.start_date).days + 1
 
-        date_list = []
-        db_input = {}
+        self.date_list = []
 
         for single_date in (self.start_date + timedelta(n) for n in range(day_count)):
-            date_list.append(single_date.strftime('%Y-%m-%d'))
+            self.date_list.append(single_date.strftime('%Y-%m-%d'))
+        self.parse_all_data()
 
-        for day in date_list:
+    def parse_all_data(self):
+        db_input = {}
+
+        for day in self.date_list:
             day_link = self.asteroid.neo_feed(self.start_date, self.end_date)['near_earth_objects'][day]
             db_input[day] = {}
 
             for get in day_link:
                 self.name = get['name']
                 self.distance = get['close_approach_data'][0]['miss_distance']['kilometers']
+
                 db_input[day].update({self.name: self.distance})
 
+        # self.nasa_coll_all.insert(db_input)
 
-        self.nasa_coll_all.insert(db_input)
-        # print(self.db_input[self.end_date])
-
-        # self.today_asteroids()
+        self.today_asteroids()
 
     def today_asteroids(self):
+        self.today_link = self.request_today_data(self.asteroid)
+        self.parse_today_data(self.today_link)
 
-        db_input_today = {}
-        today = datetime.today().strftime('%Y-%m-%d')
+    def request_today_data(self, api):
+        self.today = datetime.today().strftime('%Y-%m-%d')
+        return api.neo_feed(self.start_date, self.end_date)['near_earth_objects'][self.today]
 
-        today_link = self.asteroid.neo_feed(self.start_date, self.end_date)['near_earth_objects'][today]
-
+    def parse_today_data(self, today_link):
+        self.db_input_today = {}
         for get in today_link:
             name = get['name']
             distance = get['close_approach_data'][0]['miss_distance']['kilometers']
-            db_input_today[name] = distance
+            self.db_input_today[name] = distance
 
-        # print(db_input_today)
         # self.nasa_coll_today.insert(db_input_today)
 
 

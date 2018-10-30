@@ -25,6 +25,7 @@ def index():
 
     # get the newest document and sort the values
     for doc_today in document_cursor_today:
+
         sorted_doc_today = sorted(doc_today.items())
         sorted_doc_today.sort(key=operator.itemgetter(1))
 
