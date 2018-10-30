@@ -1,3 +1,0 @@
-#!/home/shuayb/PycharmProjects/nasa/venv/bin/python
-from numba.pycc import main
-main()
