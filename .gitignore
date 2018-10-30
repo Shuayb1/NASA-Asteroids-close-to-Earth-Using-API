@@ -1,0 +1,6 @@
+venv
+*.env
+*.pyc
+*.log
+*.tmp
+*.sqlite3
