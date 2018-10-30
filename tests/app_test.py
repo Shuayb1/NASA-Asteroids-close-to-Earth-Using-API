@@ -1,4 +1,4 @@
-from app import app, mongodb_server, mongo
+from app import app
 import unittest
 
 
