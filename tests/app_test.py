@@ -1,4 +1,3 @@
-# from flask_testing import TestCase
 from app import app, mongodb_server, mongo
 import unittest
 
