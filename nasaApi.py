@@ -66,7 +66,7 @@ class TheAPI(TheClient):
             distance = get['close_approach_data'][0]['miss_distance']['kilometers']
             self.db_input_today[name] = distance
 
-        self.nasa_coll_today.insert(db_input_today)
+        self.nasa_coll_today.insert(self.db_input_today)
 
 
 if __name__ == "__main__":
