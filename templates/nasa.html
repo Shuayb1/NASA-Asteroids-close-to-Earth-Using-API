@@ -8,6 +8,8 @@
             <meta charset="utf-8">
             <title>NASA Asteroid Update!</title>
              <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='jquery-ui-1.9.2.custom.min.css') }}">
+
 
     </head>
 
@@ -43,14 +45,21 @@
         <hr>
 
                 <header><h3>Previous 7days' Updates</h3></header>
+            <form>
                 <div id="storage">
-                    <label for="date_input">Choose a date within {{ start_date }} and today {{ end_date }}:</label>
-                    <input type="date" id="date_input" name="date_input" min={{ start_date }} max={{ end_date }} required>
+                    <label for="date_input">Choose a date within {{ start_date }} :</label>
+                    <input type="date" id="date_input" name="start_date" min={{ start_date }} max={{ end_date }} required>
+                    <label for="date_input"> and today {{ end_date }}:</label>
+                    <input type="date" id="date_input" name="end_date" min={{ start_date }} max={{ end_date }} required>
                     <span class="validity"></span>
                 </div>
+
+
+                <input type="text" id="date_select">
                 <div>
                     <button id="submit_button" type="submit">submit</button>
                 </div>
+            </form>
 
                 <p>To check all asteroids for the past seven days,<a href='/sevenDaysUpdate'> click</a>.</p>
 
@@ -65,27 +74,14 @@
         <hr>
         <footer><p>&copy;Posh Firm. All Right Reserved </p></footer>
 
-        <script type="text/javascript">
 
-                $("button").click(function()
-                {
-                    console.log();
-
-                    $.ajax
-                    ({
-                        type: 'POST',
-                        url: "/sevenDaysUpdate",
-                        data: {seven_days_values: 1},
-                        dataType: "text",
-                        success: function (data)
-                        {
-                            alert("Asteroid ");
-                        }
-                    });
-                });
-
-        </script>
-
+       <script src="{{ url_for('static', filename='jquery-1.8.3.js') }}"></script>
+       <script src="{{ url_for('static', filename='jquery-ui-1.9.2.custom.min.js') }}"></script>
+       <script>
+           $(document).ready(function () {
+               $("date_select").datepicker();
+           })
+       </script>
 
     </body>
 
