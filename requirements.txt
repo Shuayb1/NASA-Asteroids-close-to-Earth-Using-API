@@ -12,6 +12,6 @@ requests==2.18.4
 Werkzeug==0.14.1
 certifi==0.0.8
 chardet==1.0.1
-distribute==0.6.24
+
 gunicorn==0.14.2
 
