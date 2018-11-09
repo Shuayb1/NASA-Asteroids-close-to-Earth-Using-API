@@ -14,7 +14,7 @@
 
     <body>
 
-       <header><h2>Welcome to National Aeronautics and Space Administration (NASA) Asteroid distance update!</h2>
+       <header><h2>Welcome to National Aeronautics and Space Administration (NASA) Asteroid Distance Update!</h2>
         <h4>**NASA is an American agency responsible for aeronautics and aerospace research</h4></header>
 
         <hr>
@@ -43,7 +43,7 @@
         </table>
         <hr>
                 <header><h3>Previous 7days' Updates</h3></header>
-            <form>
+{#            <form>#}
                 <div id="storage">
                     <label for="date_input">Choose a date within {{ start_date }}  and today {{ end_date }}: </label>
                     <input type="date" id="date_input" name="start_date" min={{ start_date }} max={{ end_date }} required>
@@ -54,7 +54,7 @@
                 <div>
                     <button id="submit_button" type="submit">submit</button>
                 </div>
-            </form>
+{#            </form>#}
 
                 <p>To check all asteroids for the past seven days,<a href='/sevenDaysUpdate'> click</a>.</p>
 
@@ -71,8 +71,8 @@
 
 
        <script>
-           $(document).ready(function () {
-               {#$("submit_button").datepicker();#}
+           $(function () {
+               var $fetch =
                $.ajax({
                    url: "/sevenDaysUpdate.html",
                    dataType: "json",
