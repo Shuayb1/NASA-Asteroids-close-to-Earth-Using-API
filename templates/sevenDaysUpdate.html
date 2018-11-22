@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Seven Days Update</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 
 <body>
@@ -18,16 +19,19 @@
     </thead>
     <tbody>
     <div id="display">
-        {% for i,c in seven_days_values.items() %}
+
+        {% for day,value in seven_days_values.items() %}
+
             <tr>
-                <td>Asteroids for  {{ i }} </td>
+
+                <td>Asteroids for  {{ day }} </td>
+
             </tr>
 
-            {%for do in c%}
+            {%for five in value%}
                 <tr>
 
-                    <td>{{ do.count }}</td><td> {{ do.name }} </td><td> {{ do.distance }}  </td>
-
+                    <td>{{ five.count }}</td><td> {{ five.name }} </td><td> {{ five.distance }}  </td>
 
                 </tr></div>
 

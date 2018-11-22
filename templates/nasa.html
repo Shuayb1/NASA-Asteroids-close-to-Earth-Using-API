@@ -7,9 +7,8 @@
 
             <meta charset="utf-8">
             <title>NASA Asteroid Update!</title>
-             <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
-
-
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     </head>
 
     <body>
@@ -42,7 +41,7 @@
 
         </table>
         <hr>
-                <header><h3>Previous 7days' Updates</h3></header>
+                <header><h3>7-days' Updates</h3></header>
 {#            <form>#}
                 <div id="storage">
                     <label for="date_input">Choose a date within {{ start_date }}  and today {{ end_date }}: </label>
@@ -50,13 +49,15 @@
 
                     <span class="validity"></span>
                 </div>
+                <ul id="fetch"></ul>
 
                 <div>
                     <button id="submit_button" type="submit">submit</button>
                 </div>
+                <div id='response'></div>
 {#            </form>#}
 
-                <p>To check all asteroids for the past seven days,<a href='/sevenDaysUpdate'> click</a>.</p>
+                <p>To check all asteroids for the past seven days,<a href='/sevenDaysUpdate' target="_blank"> click</a>.</p>
 
         </main>
 
@@ -71,20 +72,22 @@
 
 
        <script>
-           $(function () {
-               var $fetch =
-               $.ajax({
-                   url: "/sevenDaysUpdate.html",
-                   dataType: "json",
-                   type: "GET",
-                   success: function (data) {
-                       alert(data);// It must be a json
-                       var obj = jQuery.parseJSON(data);
-                       alert(obj.cenas);
-                       scheduler.blockTime(new Date(),"fullday");
-                   },
+           $(document).ready(function() {
+               $("button").click(function(event){
+                   var the_id = event.target.id;
+                   $.ajax({
+                       url: "/sevenDaysUpdate",
+                       type: "get",
+                       data: {button_id: the_id},
+                       success: function(response) {
+                           $("#response").html(response);
+                       },
+                       error: function(xhr) {
+                           //Do Something to handle error
+                       }
+                   });
                });
-           })
+           });
        </script>
 
     </body>

@@ -45,7 +45,7 @@ def seven_days():
     # get the newest document by sorting in descending order
     document_cursor = mongo.db.nasa_collections.find({}, {'_id': False}).sort('_id', -1).limit(1)
 
-    #get the newest document and sort the values
+    # get the newest document and sort the values
     fields = {}
     seven_days_values = {}
 
@@ -58,6 +58,7 @@ def seven_days():
 
             fields[key] = sorted_doc
 
+    # limit the the asteroids to five
     for i, k in fields.items():
 
         limited_array = fields[i][:5]
